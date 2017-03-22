@@ -1,0 +1,2 @@
+inoremap <C-j> <esc>
+vnoremap <C-j> <esc>

@@ -1,0 +1,50 @@
+{
+	"version": "0.1.0",
+	"command": "make",
+	"isShellCommand": true,
+	"showOutput": "silent",
+	"tasks": [
+		{
+			"taskName": "build",
+			"isBuildCommand": true,
+			"args": [
+				"build"
+			]
+		},
+		{
+			"taskName": "testnow",
+			"isTestCommand": true,
+			"args": [
+				"testnow"
+			]
+		},
+			{
+			"taskName": "test",
+			"isTestCommand": true,
+			"args": [
+				"test"
+			]
+		},
+		{
+			"taskName": "clean",
+			"args": [
+				"clean"
+			]
+		},
+		{
+			"taskName": "release",
+			"args": [
+				"release"
+			],
+			"isWatching": true
+		},
+		{
+			"taskName": "npm",
+			"args": [
+				"debug"
+			],
+			"isWatching": true,
+			"problemMatcher": "$tsc-watch"
+		}
+	]
+}

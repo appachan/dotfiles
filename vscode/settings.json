@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite the default settings
+{
+    // common settings
+    "editor.fontFamily": "source code pro for powerline",
+    "editor.fontWeight": "",
+    "editor.fontSize": 13,
+    "editor.tabSize": 2,
+    "typescript.check.tscVersion": false
+    ,"editor.cursorStyle": "block"
+    
+    //scrollkey settings
+    ,"scrollkey.line1": 1,
+    "scrollkey.line2": 30,
+    "scrollkey.line3": 60
+}

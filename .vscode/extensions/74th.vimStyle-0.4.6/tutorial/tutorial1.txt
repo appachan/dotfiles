@@ -1,0 +1,14 @@
+insert mode : i A ...
+
+--> var = function()
+
+complex command : 3w 2f( ...
+
+--> var value = func( fuc(arg) )
+
+delete and yank : 2dd p yy p
+
+--> line4
+--> line5
+--> line1
+--> line2
