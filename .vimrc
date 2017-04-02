@@ -4,6 +4,7 @@ set clipboard=unnamed,unnamedplus
 set nocompatible
 filetype on
 set synmaxcol=200
+set clipboard=unnamed,autoselect
 
 "" texのconcealを無効化（#^ω^）
 let g:tex_conceal=''

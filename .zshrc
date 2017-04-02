@@ -4,10 +4,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-alias rm="gomi -s"
+#alias rm="gomi -s"
+alias rm="rm"
 alias sshx="ssh -2 -C -Y"
 alias cp="cp"
-alias emacs="emacs &"
+#alias emacs="emacs &"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 autoload -Uz vcs_info
