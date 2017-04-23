@@ -10,6 +10,7 @@ alias sshx="ssh -2 -C -Y"
 alias cp="cp"
 #alias emacs="emacs &"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="$HOME/.yarn/bin:$PATH"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '[%b]'

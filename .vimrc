@@ -6,8 +6,10 @@ filetype on
 set synmaxcol=200
 set clipboard=unnamed,autoselect
 
-"" texのconcealを無効化（#^ω^）
+" texのconcealを無効化
+set conceallevel=0
 let g:tex_conceal=''
+let g:vim_json_syntax_conceal=0
 
 " show candidats of command
 set wildmenu
@@ -35,7 +37,8 @@ endif
     NeoBundle 'thinca/vim-quickrun',
     NeoBundle 'gabrielelana/vim-markdown',
     NeoBundle 'Yggdroot/indentLine',
-    NeoBundle 'rhysd/vim-gfm-syntax'
+    NeoBundle 'rhysd/vim-gfm-syntax',
+    NeoBundle 'elzr/vim-json'
     "NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
     filetype plugin indent on     " required!
