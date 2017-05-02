@@ -11,6 +11,8 @@ alias cp="cp"
 #alias emacs="emacs &"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.go/bin:$PATH"
+export GOPATH="$HOME/.go"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '[%b]'
