@@ -13,13 +13,15 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.go/bin:$PATH"
 export GOPATH="$HOME/.go"
+export PATH="$GOPATH/bin:$PATH"
 
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '[%b]'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="%1(v|%F{blue}%1v%f|)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PATH="/usr/local/opt/opencv3/bin:$PATH"
+
+# for lab / experiences.
+export PATH="$HOME/workspace/klab/lp_solve:$PATH"
+export PATH="$HOME/workspace/klab/syncha-0.3.1.1:$PATH"
+alias chapas="java -jar $HOME/workspace/klab/chapas-0.742/chapas.jar -I RAW"
+alias frost="java -jar $HOME/workspace/klab/FROST_JAR/frost.jar"
