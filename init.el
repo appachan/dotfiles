@@ -27,19 +27,15 @@
                      "core/core-load-paths.el"))
   (require 'core-spacemacs)
   (spacemacs/init)
-  (spacemacs/maybe-install-dotfile)
+  ;(spacemacs/maybe-install-dotfile)
   (configuration-layer/sync)
-  (spacemacs-buffer/display-info-box)
+  ;(spacemacs-buffer/display-info-box)
   (spacemacs/setup-startup-hook)
   (require 'server)
   (unless (server-running-p) (server-start)))
 
 
 ;; my settings
-;; line num
-(require 'linum)
-(global-linum-mode 1)
-
 ;; evil keymap
 (defun evil-escape-or-quit (&optional prompt)
   (interactive)
@@ -49,8 +45,9 @@
 (define-key key-translation-map (kbd "C-j") 'evil-escape-or-quit)
 
 ;; tab-width.
-(setq go-tab-width 2) ;; Tab-width 2 in go layer.
-(setq typescript-tab-width 2) ;; Tab-width 2 in ts layer.
+(setq go-tab-width 2) ;; Tab-width 2 in go-mode.
+(setq typescript-tab-width 2) ;; Tab-width 2 in typescript-mode.
+(setq js-indent-level 2) ;; Tab-width 2 in js-mode.
 
 ;; apply tex-mode extnsions to *.tex.erb.
 (add-to-list 'auto-mode-alist '("\\.tex.erb\\'" . tex-mode))
