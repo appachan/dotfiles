@@ -19,6 +19,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+export PIPENV_VENV_IN_PROJECT="true"
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
 
 # for lab / experiences.
