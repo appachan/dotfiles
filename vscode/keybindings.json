@@ -1,53 +1,13 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-  // VimEmulator settings
-  // disable default settings
   {
     "key": "ctrl+j",
-    "when": "editorTextFocus"
-  },
-  // inInsertMode
-  {
-    "key": "ctrl+j",
-    "command": "vim.Esc",
-    "when": "editorTextFocus && vim.inInsertMode"
-  },
-  // inVisualMode
-  {
-    "key": "ctrl+j",
-    "command": "vim.Esc",
-    "when": "editorTextFocus && vim.inVisualMode"
-  },
-
-  // scrollkey settings
-  {
-    "key": "ctrl+f",
-    "command": "scrollkey.down2",
-    "when": "editorTextFocus && vim.inNormalMode"
+    "command": "extension.vim_escape",
+    "when": "editorTextFocus && vim.active && !inDebugRepl"
   },
   {
-    "key": "ctrl+b",
-    "command": "scrollkey.up2",
-    "when": "editorTextFocus && vim.inNormalMode"
-  },
-  
-  // redo settings
-  {
-    "key": "ctrl+r",
-    "command": "redo",
-    "when": "editorTextFocus && vim.inNormalMode"
+    "key": "escape",
+    "command": "-extension.vim_escape",
+    "when": "editorTextFocus && vim.active && !inDebugRepl"
   }
-  
-  // columnselection settings like vim
-  // ToDos
-  /*
-  ,{ "key": "ctrl+v+j",    "command": "cursorColumnSelectDown",
-                                     "when": "editorTextFocus" },
-  { "key": "ctrl+v+h",    "command": "cursorColumnSelectLeft",
-                                       "when": "editorTextFocus" },
-  { "key": "ctrl+v+k",  "command": "cursorColumnSelectPageUp",
-                                       "when": "editorTextFocus" },
-  { "key": "ctrl+v",   "command": "cursorColumnSelectRight",
-                                       "when": "editorTextFocus" }
-                                       */
 ]

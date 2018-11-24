@@ -11,5 +11,14 @@
     //scrollkey settings
     ,"scrollkey.line1": 1,
     "scrollkey.line2": 30,
-    "scrollkey.line3": 60
+    "scrollkey.line3": 60,
+    "python.venvPath": ".venv",
+    "python.jediEnabled": false,
+    "workbench.colorTheme": "Flatland Monokai",
+    "workbench.iconTheme": "material-icon-theme"
+    
+    //vscodevim
+    ,"vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "editor.minimap.enabled": false
 }

@@ -1,6 +1,7 @@
 # dotfiles
 My dotfiles here.
 
-## 追加予定
-- .vimrc
-- .tmux.conf
+## vscode
+Extensionsは`$ code --list-extensions > vscode/extensions.list`で更新する．
+インストールしたいときは`$ ./install_extensions.sh`
+
