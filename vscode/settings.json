@@ -1,9 +1,9 @@
 // Place your settings in this file to overwrite the default settings
 {
     // common settings
-    "editor.fontFamily": "source code pro for powerline",
-    "editor.fontWeight": "",
-    "editor.fontSize": 13,
+    "editor.fontFamily": "cica",
+    "editor.fontWeight": "normal",
+    "editor.fontSize": 15,
     "editor.tabSize": 2,
     "typescript.check.tscVersion": false
     ,"editor.cursorStyle": "block"
@@ -20,5 +20,6 @@
     //vscodevim
     ,"vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "editor.fontLigatures": true
 }
