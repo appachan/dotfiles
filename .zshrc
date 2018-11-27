@@ -31,3 +31,8 @@ alias frost="java -jar $HOME/workspace/klab/FROST_JAR/frost.jar"
 #export http_proxy=http://proxy.uec.ac.jp:8080/
 #export https_proxy=$http_proxy
 #export all_proxy=$http_proxy
+
+# 環境ごとに個別の設定ファイル
+if [[ -s "$HOME/separated_rc.zsh" ]]; then
+  source "$HOME/separated_rc.zsh"
+fi
