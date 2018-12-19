@@ -314,6 +314,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; turn auto-fill-mode off.
   (auto-fill-mode -1) ;; 'turn-off-auto-fill -> NG
+
+  ;; turn auto-fill-mode on with 'tex-mode'
+  (with-eval-after-load 'tex-mode
+    (auto-fill-mode 1))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -332,3 +336,4 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
