@@ -9,6 +9,7 @@ alias rm="rm"
 alias sshx="ssh -2 -C -Y"
 alias cp="cp"
 alias emacs='emacs -nw'
+alias cat='bat'
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.go/bin:$PATH"
