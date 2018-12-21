@@ -318,3 +318,6 @@ tags
 # Ignore all local history of files
 
 # End of https://www.gitignore.io/api/vim,sbt,java,scala,emacs,python,intellij,visualstudiocode
+
+### macOS ###
+.DS_Store
