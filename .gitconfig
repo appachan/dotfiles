@@ -22,3 +22,6 @@
 
 [commit]
   template = ~/.GIT_COMMIT_TEMPLATE.txt
+
+[ghq]
+  root = ~/workspace/dev
