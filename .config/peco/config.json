@@ -1,0 +1,6 @@
+{
+  "//": "multiple selection",
+  "keymap": {
+    "C-a": "peco.ToggleSelection"
+  }
+}
