@@ -292,3 +292,7 @@ set-option -g default-command "reattach-to-user-namespace -l zsh"
 setw -g mode-keys vi
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind-key -T copy-mode-vi y send-keys copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+
+# unbind 'C-a'(at l.18 in .tmux.conf) for backing head of prompt
+set -g prefix2 C-t
+unbind C-a
