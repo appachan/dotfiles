@@ -21,5 +21,7 @@
     ,"vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "editor.minimap.enabled": false,
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 0,
+    "keyboard.dispatch": "keyCode"
 }
