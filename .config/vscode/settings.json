@@ -23,5 +23,8 @@
     "editor.minimap.enabled": false,
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
-    "keyboard.dispatch": "keyCode"
+    "keyboard.dispatch": "keyCode",
+    "[python]": {
+        "editor.tabSize": 4
+    }
 }
