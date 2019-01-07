@@ -15,6 +15,7 @@
 [alias]
   graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
   wdiff = diff --word-diff
+  elog = ! git log --oneline --color | emojify | less -r
 
 [core]
   editor = vim -c \"set fenc=utf-8\"
