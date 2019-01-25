@@ -12,6 +12,7 @@ alias emacs='emacs -nw'
 alias cat='bat'
 alias repos='ghq list -p | peco'
 alias gorepo='cd $(repos)'
+alias sharedir='du -h -d 1 | sort -rh'
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$PATH"
