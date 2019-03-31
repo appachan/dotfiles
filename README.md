@@ -8,7 +8,7 @@ appachan's dotfiles.
 
 ### Installation
 ```
-$ cd path/to/dotfiles
+$ cd path/to/dotfiles/.config/vscode
 $ ./install_extensions.sh
 ```
 

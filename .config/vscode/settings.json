@@ -14,17 +14,21 @@
     "scrollkey.line3": 60,
     "python.venvPath": ".venv",
     "python.jediEnabled": false,
-    "workbench.colorTheme": "Flatland Monokai",
     "workbench.iconTheme": "material-icon-theme"
     
     //vscodevim
     ,"vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "editor.minimap.enabled": false,
+    "terminal.integrated.fontFamily": "monospace",
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
     "keyboard.dispatch": "keyCode",
     "[python]": {
         "editor.tabSize": 4
-    }
+    },
+    "kite.showWelcomeNotificationOnStartup": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "Ayu Mirage"
 }
