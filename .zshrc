@@ -13,6 +13,7 @@ alias cat='bat'
 alias repos='ghq list -p | peco'
 alias gorepo='cd $(repos)'
 alias sharedir='du -h -d 1 | sort -rh'
+alias tmuxnew='tmux new -s `basename $PWD`'
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="$HOME/.yarn/bin:$PATH"
