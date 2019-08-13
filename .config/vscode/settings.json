@@ -5,8 +5,7 @@
     "editor.fontWeight": "normal",
     "editor.fontSize": 15,
     "editor.tabSize": 2,
-    "typescript.check.tscVersion": false
-    ,"editor.cursorStyle": "block"
+    "editor.cursorStyle": "block"
     
     //scrollkey settings
     ,"scrollkey.line1": 1,
@@ -30,5 +29,6 @@
     "kite.showWelcomeNotificationOnStartup": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.colorTheme": "Ayu Mirage"
+    "workbench.colorTheme": "Ayu Mirage",
+    "japanese-proofreading.textlint.技術用語": false
 }
