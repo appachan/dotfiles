@@ -28,6 +28,10 @@ eval "$(pyenv init -)"
 export PIPENV_VENV_IN_PROJECT="true"
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
 
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
 # for lab / experiences.
 export PATH="$HOME/workspace/klab/lp_solve:$PATH"
 export PATH="$HOME/workspace/klab/syncha-0.3.1.1:$PATH"
