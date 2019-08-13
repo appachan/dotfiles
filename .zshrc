@@ -59,3 +59,7 @@ bindkey '^R' peco-select-history
 if [[ -s "$HOME/separated_rc.zsh" ]]; then
   source "$HOME/separated_rc.zsh"
 fi
+
+# gcloud CLI via brew cask
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
