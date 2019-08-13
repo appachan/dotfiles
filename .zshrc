@@ -8,7 +8,6 @@ fi
 alias rm="rm"
 alias sshx="ssh -2 -C -Y"
 alias cp="cp"
-alias emacs='emacs -nw'
 alias cat='bat'
 alias repos='ghq list -p | peco'
 alias gorepo='cd $(repos)'
