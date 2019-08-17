@@ -2,6 +2,8 @@
 
 UNAME_S    := $(shell uname -s)
 BREW       := $(shell which brew 2> /dev/null)
+GIT				 := $(shell which git 2> /dev/null)
+CURL			 := $(shell which curl 2> /dev/null)
 ROOT			 := $(shell pwd)
 
 export ROOT
@@ -18,56 +20,27 @@ ifeq ($(BREW), )
 	BREW_COMMAND := yes ' ' | $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
-.PHONY: all init deploy test build_brew
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
+
+.PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
+setup_vim setup_zsh setup_tmux setup_latex_japanese install_pyenv install_tools_on_go install_tools_on_python done
 
 #all: init deploy done
 #all: deploy
 all: test
 
-# brew, mas, | zsh(zprezto), vim, tmux, ...
-init:
-	@echo 'start initializing...'
-
-# clean dotfiles already deployed.
-clean:
-	@echo 'remove symbolic-links'
-
-	# zsh
-	unlink $$HOME/.zshrc &> /dev/null
-
-	# git
-	unlink $$HOME/.gitconfig &> /dev/null
-	unlink $$HOME/.gitignore_global &> /dev/null
-	unlink $$HOME/.GIT_COMMIT_TEMPLATE.txt &> /dev/null
-
-	# vim
-	unlink $$HOME/.vimrc &> /dev/null
-
-	# intellij
-	unlink $$HOME/.ideavimrc &> /dev/null
-
-	# tmux
-	unlink $$HOME/.tmux.conf &> /dev/null
-	unlink $$HOME/.tmux.conf.local &> /dev/null
-
-	# vscode (only macos)
-ifeq ($(UNAME_S),Darwin)
-	unlink $$HOME/Library/Application\ Support/Code/User/settings.json &> /dev/null
-	unlink $$HOME/Library/Application\ Support/Code/User/keybindings.json &> /dev/null
+check_requirements:
+ifeq ($(GIT), )
+	@echo 'git required, but not found.'
+	false
+endif
+ifeq ($(CURL), )
+	@echo 'curl required, but not found.'
+	false
 endif
 
-	# tools on python
-	## atcoder-tools
-	unlink $$HOME/.atcodertools.toml &> /dev/null
-
-	# tools based on the XDG Base Directory Specification
-	## alacritty
-	unlink $$HOME/.config/alacritty &> /dev/null
-	## karabiner-elements
-	unlink $$HOME/.config/karabiner &> /dev/null
-	## peco
-	unlink $$HOME/.config/peco &> /dev/null
+# brew, mas, | zsh(zprezto), vim, tmux, ...
+init: check_requirements build_brew install_brew_formulae setup_zsh setup_vim setup_tmux
 
 # dotfiles installation.
 deploy: clean
@@ -112,13 +85,45 @@ endif
 	## peco
 	ln -s $(ROOT)/.config/peco $$HOME/.config/peco
 
-test:
-	@echo 'this is test message.'
+# clean dotfiles already deployed.
+clean:
+	@echo 'remove symbolic-links'
+
+	# zsh
+	unlink $$HOME/.zshrc &> /dev/null
+
+	# git
+	unlink $$HOME/.gitconfig &> /dev/null
+	unlink $$HOME/.gitignore_global &> /dev/null
+	unlink $$HOME/.GIT_COMMIT_TEMPLATE.txt &> /dev/null
+
+	# vim
+	unlink $$HOME/.vimrc &> /dev/null
+
+	# intellij
+	unlink $$HOME/.ideavimrc &> /dev/null
+
+	# tmux
+	unlink $$HOME/.tmux.conf &> /dev/null
+	unlink $$HOME/.tmux.conf.local &> /dev/null
+
+	# vscode (only macos)
 ifeq ($(UNAME_S),Darwin)
-	@echo 'os: macOS'
-else
-	@echo 'os: not macOS'
+	unlink $$HOME/Library/Application\ Support/Code/User/settings.json &> /dev/null
+	unlink $$HOME/Library/Application\ Support/Code/User/keybindings.json &> /dev/null
 endif
+
+	# tools on python
+	## atcoder-tools
+	unlink $$HOME/.atcodertools.toml &> /dev/null
+
+	# tools based on the XDG Base Directory Specification
+	## alacritty
+	unlink $$HOME/.config/alacritty &> /dev/null
+	## karabiner-elements
+	unlink $$HOME/.config/karabiner &> /dev/null
+	## peco
+	unlink $$HOME/.config/peco &> /dev/null
 
 build_brew:
 	# setup Homebrew.
@@ -129,6 +134,9 @@ install_brew_formulae:
 	# brew-bundle will automatically skip cask & mas on Linux (https://github.com/Homebrew/homebrew-bundle/blob/master/README.md).
 	brew bundle --file=$(ROOT)/packages/Brewfile
 
+setup_zsh:
+	# install zprezto
+
 setup_vim:
 	# install NeoBundle
 	$(NEOBUNDLE_COMMAND)
@@ -137,8 +145,10 @@ setup_tmux:
 	# install tpm
 	mkdir -p $$HOME/.tmux/plugins/
 	git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm
+
 setup_latex_japanese:
 	$(ROOT)/tex/bin/setup.sh
+
 install_pyenv:
 	# setup global python environment.
 
@@ -147,3 +157,14 @@ install_tools_on_python:
 
 install_tools_on_go:
 	# go get ...
+
+done:
+	@echo 'done.'
+
+test:
+	@echo 'this is test message.'
+ifeq ($(UNAME_S),Darwin)
+	@echo 'os: macOS'
+else
+	@echo 'os: not macOS'
+endif
