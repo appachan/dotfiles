@@ -4,6 +4,8 @@ UNAME_S    := $(shell uname -s)
 BREW       := $(shell which brew 2> /dev/null)
 ROOT			 := $(shell pwd)
 
+export ROOT
+
 ifeq ($(UNAME_S),Darwin)
 	BREW_COMPILER := /usr/bin/ruby -e
 	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/master/install
@@ -131,6 +133,8 @@ setup_vim:
 	# install NeoBundle
 	$(NEOBUNDLE_COMMAND)
 
+setup_latex_japanese:
+	$(ROOT)/tex/bin/setup.sh
 install_pyenv:
 	# setup global python environment.
 
