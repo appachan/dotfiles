@@ -133,6 +133,10 @@ setup_vim:
 	# install NeoBundle
 	$(NEOBUNDLE_COMMAND)
 
+setup_tmux:
+	# install tpm
+	mkdir -p $$HOME/.tmux/plugins/
+	git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm
 setup_latex_japanese:
 	$(ROOT)/tex/bin/setup.sh
 install_pyenv:
