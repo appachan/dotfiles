@@ -136,6 +136,7 @@ install_brew_formulae:
 
 setup_zsh:
 	# install zprezto
+	zsh $(ROOT)/zsh/prezto/setup.sh
 
 setup_vim:
 	# install NeoBundle
