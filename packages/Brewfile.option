@@ -1,0 +1,9 @@
+tap "uetchy/nlp"
+
+brew "cabocha"
+brew "juman"
+brew "kyoto-cabinet"
+brew "virtuoso"
+brew "uetchy/nlp/knp", args: ["with-crf++"]
+brew "apache-spark"
+brew "sbt"
