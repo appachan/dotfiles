@@ -17,6 +17,7 @@ ifeq ($(BREW), )
 endif
 
 .PHONY: all init deploy test build_brew
+NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 #all: init deploy done
 #all: deploy
@@ -125,6 +126,10 @@ install_brew_formulae:
 	# install tools from brew, cask, mas by brew-bundle.
 	# brew-bundle will automatically skip cask & mas on Linux (https://github.com/Homebrew/homebrew-bundle/blob/master/README.md).
 	brew bundle --file=$(ROOT)/packages/Brewfile
+
+setup_vim:
+	# install NeoBundle
+	$(NEOBUNDLE_COMMAND)
 
 install_pyenv:
 	# setup global python environment.
