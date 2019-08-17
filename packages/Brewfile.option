@@ -7,3 +7,4 @@ brew "virtuoso"
 brew "uetchy/nlp/knp", args: ["with-crf++"]
 brew "apache-spark"
 brew "sbt"
+brew "mongodb"
