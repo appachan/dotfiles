@@ -25,9 +25,7 @@ NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shou
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
 setup_vim setup_zsh setup_tmux setup_latex_japanese install_pyenv install_tools_on_go install_tools_on_python done
 
-#all: init deploy done
-#all: deploy
-all: test
+all: init deploy done
 
 check_requirements:
 ifeq ($(GIT), )
@@ -128,6 +126,11 @@ endif
 build_brew:
 	# setup Homebrew.
 	$(BREW_COMMAND)
+ifeq ($(UNAME_S),Darwin)
+	eval $$(/usr/local/bin/brew shellenv)
+else
+	eval $$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+endif
 
 install_brew_formulae:
 	# install tools from brew, cask, mas by brew-bundle.
