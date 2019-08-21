@@ -67,6 +67,7 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 case ${OSTYPE} in
     darwin*)
         eval $(/usr/local/bin/brew shellenv)
+        ;;
     linux*)
         eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
         ;;
