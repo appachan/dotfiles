@@ -144,7 +144,7 @@ endif
 
 setup_zsh:
 	# install zprezto
-	zsh $(ROOT)/zsh/prezto/setup.sh
+	$(EXPORT_BREW) && zsh $(ROOT)/zsh/prezto/setup.sh
 
 setup_vim:
 	# install NeoBundle
