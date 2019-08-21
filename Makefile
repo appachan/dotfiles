@@ -20,6 +20,13 @@ ifeq ($(BREW), )
 	BREW_COMMAND := yes ' ' | $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
+# export path of brew command.
+ifeq ($(UNAME_S),Darwin)
+	EXPORT_BREW := eval $$(/usr/local/bin/brew shellenv)
+else
+	EXPORT_BREW := eval $$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+endif
+
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
@@ -126,18 +133,13 @@ endif
 build_brew:
 	# setup Homebrew.
 	$(BREW_COMMAND)
-ifeq ($(UNAME_S),Darwin)
-	eval $$(/usr/local/bin/brew shellenv)
-else
-	eval $$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-endif
 
 install_brew_formulae:
 	# install tools from brew, cask, mas by brew-bundle.
 	# brew-bundle will automatically skip cask & mas on Linux (https://github.com/Homebrew/homebrew-bundle/blob/master/README.md).
-	brew bundle --file=$(ROOT)/packages/Brewfile
+	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/packages/Brewfile
 ifeq ($(UNAME_S),Darwin)
-	brew bundle --file=$(ROOT)/packages/Brewfile.macos
+	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/packages/Brewfile.macos
 endif
 
 setup_zsh:
