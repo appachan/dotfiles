@@ -95,40 +95,40 @@ clean:
 	@echo 'remove symbolic-links'
 
 	# zsh
-	unlink $$HOME/.zshrc &> /dev/null
+	rm -rf $$HOME/.zshrc &> /dev/null
 
 	# git
-	unlink $$HOME/.gitconfig &> /dev/null
-	unlink $$HOME/.gitignore_global &> /dev/null
-	unlink $$HOME/.GIT_COMMIT_TEMPLATE.txt &> /dev/null
+	rm -rf $$HOME/.gitconfig &> /dev/null
+	rm -rf $$HOME/.gitignore_global &> /dev/null
+	rm -rf $$HOME/.GIT_COMMIT_TEMPLATE.txt &> /dev/null
 
 	# vim
-	unlink $$HOME/.vimrc &> /dev/null
+	rm -rf $$HOME/.vimrc &> /dev/null
 
 	# intellij
-	unlink $$HOME/.ideavimrc &> /dev/null
+	rm -rf $$HOME/.ideavimrc &> /dev/null
 
 	# tmux
-	unlink $$HOME/.tmux.conf &> /dev/null
-	unlink $$HOME/.tmux.conf.local &> /dev/null
+	rm -rf $$HOME/.tmux.conf &> /dev/null
+	rm -rf $$HOME/.tmux.conf.local &> /dev/null
 
 	# vscode (only macos)
 ifeq ($(UNAME_S),Darwin)
-	unlink $$HOME/Library/Application\ Support/Code/User/settings.json &> /dev/null
-	unlink $$HOME/Library/Application\ Support/Code/User/keybindings.json &> /dev/null
+	rm -rf $$HOME/Library/Application\ Support/Code/User/settings.json &> /dev/null
+	rm -rf $$HOME/Library/Application\ Support/Code/User/keybindings.json &> /dev/null
 endif
 
 	# tools on python
 	## atcoder-tools
-	unlink $$HOME/.atcodertools.toml &> /dev/null
+	rm -rf $$HOME/.atcodertools.toml &> /dev/null
 
 	# tools based on the XDG Base Directory Specification
 	## alacritty
-	unlink $$HOME/.config/alacritty &> /dev/null
+	rm -rf $$HOME/.config/alacritty &> /dev/null
 	## karabiner-elements
-	unlink $$HOME/.config/karabiner &> /dev/null
+	rm -rf $$HOME/.config/karabiner &> /dev/null
 	## peco
-	unlink $$HOME/.config/peco &> /dev/null
+	rm -rf $$HOME/.config/peco &> /dev/null
 
 build_brew:
 	# setup Homebrew.
