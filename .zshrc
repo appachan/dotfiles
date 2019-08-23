@@ -62,3 +62,13 @@ fi
 # gcloud CLI via brew cask
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+# export brew formulae path
+case ${OSTYPE} in
+    darwin*)
+        eval $(/usr/local/bin/brew shellenv)
+        ;;
+    linux*)
+        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        ;;
+esac
