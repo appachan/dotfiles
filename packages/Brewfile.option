@@ -1,0 +1,11 @@
+tap "uetchy/nlp"
+
+brew "cabocha"
+brew "juman"
+brew "kyoto-cabinet"
+cask "virtualbox"
+brew "virtuoso"
+brew "uetchy/nlp/knp", args: ["with-crf++"]
+brew "apache-spark"
+brew "sbt"
+brew "mongodb"
