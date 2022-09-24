@@ -69,14 +69,6 @@ deploy: clean
 	ln -s $(ROOT)/tmux/tmux_template/.tmux.conf $$HOME/.tmux.conf
 	ln -s $(ROOT)/tmux/.tmux.conf.local $$HOME/.tmux.conf.local
 
-	# vscode (only macos)
-	# vscodeがうっかり生成することがあるので -f
-ifeq ($(UNAME_S),Darwin)
-	ln -sf $(ROOT)/vscode/settings.json $$HOME/Library/Application\ Support/Code/User/settings.json
-	ln -sf $(ROOT)/vscode/keybindings.json $$HOME/Library/Application\ Support/Code/User/keybindings.json
-	$(ROOT)/vscode/bin/install_extensions.sh
-endif
-
 	# tools on python
 	## atcoder-tools
 	ln -s $(ROOT)/.atcodertools.toml $$HOME/.atcodertools.toml
@@ -111,12 +103,6 @@ clean:
 	# tmux
 	rm -rf $$HOME/.tmux.conf &> /dev/null
 	rm -rf $$HOME/.tmux.conf.local &> /dev/null
-
-	# vscode (only macos)
-ifeq ($(UNAME_S),Darwin)
-	rm -rf $$HOME/Library/Application\ Support/Code/User/settings.json &> /dev/null
-	rm -rf $$HOME/Library/Application\ Support/Code/User/keybindings.json &> /dev/null
-endif
 
 	# tools on python
 	## atcoder-tools
