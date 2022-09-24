@@ -14,32 +14,13 @@ alias gorepo='cd $(repos)'
 alias sharedir='du -h -d 1 | sort -rh'
 alias tmuxnew='tmux new -s `basename $PWD`'
 
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.go/bin:$PATH"
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 export PIPENV_VENV_IN_PROJECT="true"
-export PATH="/usr/local/opt/opencv3/bin:$PATH"
-
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-
-# for lab / experiences.
-export PATH="$HOME/workspace/klab/lp_solve:$PATH"
-export PATH="$HOME/workspace/klab/syncha-0.3.1.1:$PATH"
-alias chapas="java -jar $HOME/workspace/klab/chapas-0.742/chapas.jar -I RAW"
-alias frost="java -jar $HOME/workspace/klab/FROST_JAR/frost.jar"
-
-#export http_proxy=http://proxy.uec.ac.jp:8080/
-#export https_proxy=$http_proxy
-#export all_proxy=$http_proxy
 
 # show cmd history with peco
 function peco-select-history() {
@@ -62,6 +43,13 @@ fi
 # gcloud CLI via brew cask
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+# starship
+eval "$(starship init zsh)"
 
 # export brew formulae path
 case ${OSTYPE} in
