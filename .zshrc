@@ -63,6 +63,9 @@ fi
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
+# starship
+eval "$(starship init zsh)"
+
 # export brew formulae path
 case ${OSTYPE} in
     darwin*)
