@@ -30,7 +30,7 @@ endif
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
-setup_vim setup_zsh setup_tmux setup_latex_japanese install_pyenv install_tools_on_go install_tools_on_python done
+setup_vim setup_zsh setup_tmux setup_latex_japanese install_tools_on_go install_tools_on_python done
 
 all: init deploy done
 
@@ -143,9 +143,6 @@ setup_tmux:
 
 setup_latex_japanese:
 	$(ROOT)/tex/bin/setup.sh
-
-install_pyenv:
-	# setup global python environment.
 
 install_tools_on_python:
 	# pip install ...

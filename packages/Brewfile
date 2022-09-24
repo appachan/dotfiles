@@ -3,7 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 
-brew "anyenv"
+brew "asdf"
 brew "bat"
 brew "cmake"
 brew "emojify"
