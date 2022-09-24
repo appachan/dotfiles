@@ -14,6 +14,8 @@
 ![require git](https://img.shields.io/badge/requirements-git-blue)
 ![require curl](https://img.shields.io/badge/requirements-curl-blue)
 
+![eyecatch](https://raw.githubusercontent.com/appachan/dotfiles/bdb7f5e972518795df6db56298ad628cb07833ed/doc/eyecatch.png)
+
 ## Installation
 ```
 $ sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev # for Ubuntu.
