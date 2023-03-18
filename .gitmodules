@@ -1,3 +1,6 @@
 [submodule ".config/tmux"]
 	path = tmux/tmux_template
 	url = https://github.com/gpakosz/.tmux.git
+[submodule ".config/alacritty/themes"]
+	path = .config/alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme.git

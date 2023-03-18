@@ -3,8 +3,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
-#alias rm="gomi -s"
+case ${OSTYPE} in
+    darwin*)
+        eval $(/opt/homebrew/bin/brew shellenv)
+        ;;
+    linux*)
+        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        ;;
+esac
+
 alias rm="rm"
 alias sshx="ssh -2 -C -Y"
 alias cp="cp"
@@ -24,13 +31,9 @@ export PIPENV_VENV_IN_PROJECT="true"
 
 # show cmd history with peco
 function peco-select-history() {
-    # historyを番号なし、逆順、最初から表示。
-    # 順番を保持して重複を削除。
-    # カーソルの左側の文字列をクエリにしてpecoを起動
-    # \nを改行に変換
     BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
-    CURSOR=$#BUFFER             # カーソルを文末に移動
-    zle -R -c                   # refresh
+    CURSOR=$#BUFFER
+    zle -R -c
 }
 zle -N peco-select-history
 bindkey '^R' peco-select-history
@@ -45,18 +48,11 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.in
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
+# enable asdf
+. $(brew --prefix asdf)/libexec/asdf.sh
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+# enable direnv
+eval "$(direnv hook zsh)"
 
 # starship
 eval "$(starship init zsh)"
-
-# export brew formulae path
-case ${OSTYPE} in
-    darwin*)
-        eval $(/usr/local/bin/brew shellenv)
-        ;;
-    linux*)
-        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-        ;;
-esac

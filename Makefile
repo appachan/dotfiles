@@ -9,8 +9,8 @@ ROOT			 := $(shell pwd)
 export ROOT
 
 ifeq ($(UNAME_S),Darwin)
-	BREW_COMPILER := /usr/bin/ruby -e
-	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/master/install
+	BREW_COMPILER := /bin/bash -c
+	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 else
 	BREW_COMPILER := sh -c
 	BREW_SOURCE := https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
@@ -22,7 +22,7 @@ endif
 
 # export path of brew command.
 ifeq ($(UNAME_S),Darwin)
-	EXPORT_BREW := eval $$(/usr/local/bin/brew shellenv)
+	EXPORT_BREW := eval $$(/opt/homebrew/bin/brew shellenv)
 else
 	EXPORT_BREW := eval $$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 endif
@@ -30,7 +30,7 @@ endif
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
-setup_vim setup_zsh setup_tmux setup_latex_japanese install_tools_on_go install_tools_on_python done
+setup_vim setup_zsh setup_tmux setup_latex_japanese done
 
 all: init deploy done
 
@@ -57,21 +57,13 @@ deploy: clean
 	# git
 	ln -s $(ROOT)/.gitconfig $$HOME/.gitconfig
 	ln -s $(ROOT)/.gitignore_global $$HOME/.gitignore_global
-	ln -s $(ROOT)/.GIT_COMMIT_TEMPLATE.txt $$HOME/.GIT_COMMIT_TEMPLATE.txt
 
 	# vim
 	ln -s $(ROOT)/.vimrc $$HOME/.vimrc
 
-	# intellij
-	ln -s $(ROOT)/.ideavimrc $$HOME/.ideavimrc
-
 	# tmux
 	ln -s $(ROOT)/tmux/tmux_template/.tmux.conf $$HOME/.tmux.conf
 	ln -s $(ROOT)/tmux/.tmux.conf.local $$HOME/.tmux.conf.local
-
-	# tools on python
-	## atcoder-tools
-	ln -s $(ROOT)/.atcodertools.toml $$HOME/.atcodertools.toml
 
 	# tools based on the XDG Base Directory Specification
 	mkdir -p $$HOME/.config
@@ -81,6 +73,12 @@ deploy: clean
 	ln -s $(ROOT)/.config/karabiner $$HOME/.config/karabiner
 	## peco
 	ln -s $(ROOT)/.config/peco $$HOME/.config/peco
+	## starship
+	ln -s $(ROOT)/.config/starship.toml $$HOME/.config/starship.toml
+	## gitui
+	ln -s $(ROOT)/.config/gitui $$HOME/.config/.gitui
+	## neovim
+	ln -s $(ROOT)/.config/nvim $$HOME/.config/nvim
 
 # clean dotfiles already deployed.
 clean:
@@ -92,21 +90,13 @@ clean:
 	# git
 	rm -rf $$HOME/.gitconfig &> /dev/null
 	rm -rf $$HOME/.gitignore_global &> /dev/null
-	rm -rf $$HOME/.GIT_COMMIT_TEMPLATE.txt &> /dev/null
 
 	# vim
 	rm -rf $$HOME/.vimrc &> /dev/null
 
-	# intellij
-	rm -rf $$HOME/.ideavimrc &> /dev/null
-
 	# tmux
 	rm -rf $$HOME/.tmux.conf &> /dev/null
 	rm -rf $$HOME/.tmux.conf.local &> /dev/null
-
-	# tools on python
-	## atcoder-tools
-	rm -rf $$HOME/.atcodertools.toml &> /dev/null
 
 	# tools based on the XDG Base Directory Specification
 	## alacritty
@@ -121,12 +111,7 @@ build_brew:
 	$(BREW_COMMAND)
 
 install_brew_formulae:
-	# install tools from brew, cask, mas by brew-bundle.
-	# brew-bundle will automatically skip cask & mas on Linux (https://github.com/Homebrew/homebrew-bundle/blob/master/README.md).
-	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/packages/Brewfile
-ifeq ($(UNAME_S),Darwin)
-	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/packages/Brewfile.macos
-endif
+	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/Brewfile
 
 setup_zsh:
 	# install zprezto
@@ -143,12 +128,6 @@ setup_tmux:
 
 setup_latex_japanese:
 	$(ROOT)/tex/bin/setup.sh
-
-install_tools_on_python:
-	# pip install ...
-
-install_tools_on_go:
-	# go get ...
 
 done:
 	@echo 'done.'

@@ -21,8 +21,5 @@
   editor = vim -c \"set fenc=utf-8\"
   excludesfile = ~/.gitignore_global
 
-[commit]
-  template = ~/.GIT_COMMIT_TEMPLATE.txt
-
 [ghq]
   root = ~/workspace/dev
