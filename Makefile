@@ -73,6 +73,8 @@ deploy: clean
 	ln -s $(ROOT)/.config/karabiner $$HOME/.config/karabiner
 	## peco
 	ln -s $(ROOT)/.config/peco $$HOME/.config/peco
+	## gitui
+	ln -s $(ROOT)/.config/gitui $$HOME/.config/.gitui
 	## neovim
 	ln -s $(ROOT)/.config/nvim $$HOME/.config/nvim
 
