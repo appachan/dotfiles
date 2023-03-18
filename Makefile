@@ -9,8 +9,8 @@ ROOT			 := $(shell pwd)
 export ROOT
 
 ifeq ($(UNAME_S),Darwin)
-	BREW_COMPILER := /usr/bin/ruby -e
-	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/master/install
+	BREW_COMPILER := /bin/bash -c
+	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 else
 	BREW_COMPILER := sh -c
 	BREW_SOURCE := https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
@@ -22,7 +22,7 @@ endif
 
 # export path of brew command.
 ifeq ($(UNAME_S),Darwin)
-	EXPORT_BREW := eval $$(/usr/local/bin/brew shellenv)
+	EXPORT_BREW := eval $$(/opt/homebrew/bin/brew shellenv)
 else
 	EXPORT_BREW := eval $$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 endif
