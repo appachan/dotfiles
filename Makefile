@@ -105,12 +105,7 @@ build_brew:
 	$(BREW_COMMAND)
 
 install_brew_formulae:
-	# install tools from brew, cask, mas by brew-bundle.
-	# brew-bundle will automatically skip cask & mas on Linux (https://github.com/Homebrew/homebrew-bundle/blob/master/README.md).
-	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/packages/Brewfile
-ifeq ($(UNAME_S),Darwin)
-	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/packages/Brewfile.macos
-endif
+	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/Brewfile
 
 setup_zsh:
 	# install zprezto
