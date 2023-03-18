@@ -51,6 +51,8 @@ export PATH="/usr/local/opt/avr-gcc@7/bin:$PATH"
 # enable asdf
 . $(brew --prefix asdf)/libexec/asdf.sh
 
+# enable direnv
+eval "$(direnv hook zsh)"
 
 # starship
 eval "$(starship init zsh)"
