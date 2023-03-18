@@ -30,7 +30,7 @@ endif
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
-setup_vim setup_zsh setup_tmux setup_latex_japanese install_tools_on_go install_tools_on_python done
+setup_vim setup_zsh setup_tmux setup_latex_japanese done
 
 all: init deploy done
 
@@ -61,16 +61,9 @@ deploy: clean
 	# vim
 	ln -s $(ROOT)/.vimrc $$HOME/.vimrc
 
-	# intellij
-	ln -s $(ROOT)/.ideavimrc $$HOME/.ideavimrc
-
 	# tmux
 	ln -s $(ROOT)/tmux/tmux_template/.tmux.conf $$HOME/.tmux.conf
 	ln -s $(ROOT)/tmux/.tmux.conf.local $$HOME/.tmux.conf.local
-
-	# tools on python
-	## atcoder-tools
-	ln -s $(ROOT)/.atcodertools.toml $$HOME/.atcodertools.toml
 
 	# tools based on the XDG Base Directory Specification
 	mkdir -p $$HOME/.config
@@ -95,16 +88,9 @@ clean:
 	# vim
 	rm -rf $$HOME/.vimrc &> /dev/null
 
-	# intellij
-	rm -rf $$HOME/.ideavimrc &> /dev/null
-
 	# tmux
 	rm -rf $$HOME/.tmux.conf &> /dev/null
 	rm -rf $$HOME/.tmux.conf.local &> /dev/null
-
-	# tools on python
-	## atcoder-tools
-	rm -rf $$HOME/.atcodertools.toml &> /dev/null
 
 	# tools based on the XDG Base Directory Specification
 	## alacritty
@@ -141,12 +127,6 @@ setup_tmux:
 
 setup_latex_japanese:
 	$(ROOT)/tex/bin/setup.sh
-
-install_tools_on_python:
-	# pip install ...
-
-install_tools_on_go:
-	# go get ...
 
 done:
 	@echo 'done.'

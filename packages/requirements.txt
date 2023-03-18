@@ -1,4 +1,0 @@
-atcoder-tools
-kaggle
-pipenv
-Pygments
