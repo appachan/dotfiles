@@ -30,7 +30,7 @@ endif
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
-setup_vim setup_zsh setup_tmux setup_latex_japanese done
+setup_vim setup_zsh setup_tmux done
 
 all: init deploy done
 
@@ -125,9 +125,6 @@ setup_tmux:
 	# install tpm
 	mkdir -p $$HOME/.tmux/plugins/
 	git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm
-
-setup_latex_japanese:
-	$(ROOT)/tex/bin/setup.sh
 
 done:
 	@echo 'done.'
