@@ -19,8 +19,13 @@
 ## Installation
 
 ```
-$ sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev # for Ubuntu.
-$ xcode-select --install # for macOS.
+# for Ubuntu
+$ sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+
+# for macOS
+$ xcode-select --install
+$ sudo softwareupdate --install-rosetta
+
 $ git clone --recursive https://github.com/appachan/dotfiles.git
 $ cd dotfiles
 $ make

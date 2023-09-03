@@ -265,13 +265,16 @@ tmux_conf_copy_to_os_clipboard=True
 # -- my settings ---------------------------------------------------------------
 # color
 set-option -g default-terminal screen-256color
-set -g terminal-overrides 'xterm:colors=256'
+set -g terminal-overrides ',alacritty:RGB'
 set-option -g status-bg "colour255"
 
 # prefix key: C-t
 unbind-key C-t
 set-option -g prefix C-t
 bind-key C-t send-prefix
+
+# decrease repeat timeout
+set -sg repeat-time 200
 
 # move panes
 bind -n C-o select-pane -t :.+
