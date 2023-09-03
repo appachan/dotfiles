@@ -26,6 +26,7 @@ export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/bin/:$PATH"
 
 export PIPENV_VENV_IN_PROJECT="true"
 
