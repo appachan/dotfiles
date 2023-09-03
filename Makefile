@@ -76,7 +76,7 @@ deploy: clean
 	## starship
 	ln -s $(ROOT)/.config/starship.toml $$HOME/.config/starship.toml
 	## gitui
-	ln -s $(ROOT)/.config/gitui $$HOME/.config/.gitui
+	ln -s $(ROOT)/.config/gitui $$HOME/.config/gitui
 	## neovim
 	ln -s $(ROOT)/.config/nvim $$HOME/.config/nvim
 
