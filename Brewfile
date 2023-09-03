@@ -35,7 +35,6 @@ if OS.mac?
   cask "alfred"
   cask "flux"
   cask "google-chrome"
-  cask "google-cloud-sdk"
   cask "google-japanese-ime"
   cask "karabiner-elements"
   cask "slack"
