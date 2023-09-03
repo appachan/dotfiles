@@ -265,7 +265,7 @@ tmux_conf_copy_to_os_clipboard=True
 # -- my settings ---------------------------------------------------------------
 # color
 set-option -g default-terminal screen-256color
-set -g terminal-overrides 'xterm:colors=256'
+set -g terminal-overrides ',alacritty:RGB'
 set-option -g status-bg "colour255"
 
 # prefix key: C-t
