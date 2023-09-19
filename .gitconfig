@@ -1,7 +1,7 @@
 ### Git global configurations ###
 
 [user]
-  name  = Appakun
+  name  = appachan
   email = appachan.hotel@gmail.com 
 
 [github]
@@ -18,7 +18,7 @@
   elog = ! git log --oneline --color | emojify | less -r
 
 [core]
-  editor = vim -c \"set fenc=utf-8\"
+  editor = nvim
   excludesfile = ~/.gitignore_global
 
 [ghq]

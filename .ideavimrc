@@ -1,0 +1,4 @@
+inoremap <C-j> <esc>
+vnoremap <C-j> <esc>
+
+set clipboard=unnamed

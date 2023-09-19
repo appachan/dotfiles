@@ -44,6 +44,7 @@ if OS.mac?
   cask "scroll-reverser"
   cask "visual-studio-code"
   cask "xquartz"
+  cask "android-studio"
 
   mas "GIPHY CAPTURE", id: 668208984
   mas "Headphoned", id: 1040734333
