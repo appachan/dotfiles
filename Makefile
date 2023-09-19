@@ -61,6 +61,9 @@ deploy: clean
 	# vim
 	ln -s $(ROOT)/.vimrc $$HOME/.vimrc
 
+	# jetbranins
+	ln -s $(ROOT)/.ideavimrc $$HOME/.ideavimrc
+
 	# tmux
 	ln -s $(ROOT)/tmux/tmux_template/.tmux.conf $$HOME/.tmux.conf
 	ln -s $(ROOT)/tmux/.tmux.conf.local $$HOME/.tmux.conf.local
@@ -93,6 +96,9 @@ clean:
 
 	# vim
 	rm -rf $$HOME/.vimrc &> /dev/null
+
+	# jetbranins
+	rm -rf $$HOME/.ideavimrc &> /dev/null
 
 	# tmux
 	rm -rf $$HOME/.tmux.conf &> /dev/null
