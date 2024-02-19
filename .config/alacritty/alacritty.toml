@@ -1,0 +1,21 @@
+import = ["~/.config/alacritty/themes/themes/iterm.toml"]
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "Cica"
+
+[shell]
+args = ["--login"]
+program = "/bin/zsh"
+
+[window]
+startup_mode = "Maximized"
+
+[window.padding]
+x = 5
+y = 0
