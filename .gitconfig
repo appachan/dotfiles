@@ -23,3 +23,6 @@
 
 [ghq]
   root = ~/workspace/dev
+
+[rebase]
+	autostash = true
