@@ -15,6 +15,7 @@ program = "/bin/zsh"
 
 [window]
 startup_mode = "Maximized"
+option_as_alt = "Both"
 
 [window.padding]
 x = 5
