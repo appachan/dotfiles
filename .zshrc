@@ -63,3 +63,6 @@ then
   autoload -Uz compinit
   compinit
 fi
+
+# load device-specific configures
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
