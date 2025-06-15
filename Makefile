@@ -56,7 +56,6 @@ deploy: clean
 
 	# git
 	ln -s $(ROOT)/.gitconfig $$HOME/.gitconfig
-	ln -s $(ROOT)/.gitignore_global $$HOME/.gitignore_global
 
 	# vim
 	ln -s $(ROOT)/.vimrc $$HOME/.vimrc
@@ -92,7 +91,6 @@ clean:
 
 	# git
 	rm -rf $$HOME/.gitconfig &> /dev/null
-	rm -rf $$HOME/.gitignore_global &> /dev/null
 
 	# vim
 	rm -rf $$HOME/.vimrc &> /dev/null

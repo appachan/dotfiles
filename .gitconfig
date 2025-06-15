@@ -19,10 +19,9 @@
 
 [core]
   editor = nvim
-  excludesfile = ~/.gitignore_global
 
 [ghq]
-  root = ~/workspace/dev
+  root = ~/work/src/
 
 [rebase]
 	autostash = true
