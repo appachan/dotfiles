@@ -52,3 +52,14 @@ eval "$(direnv hook zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
+# completion
+autoload bashcompinit && bashcompinit
+## brew-related completion
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
