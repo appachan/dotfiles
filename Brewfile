@@ -49,7 +49,6 @@ if OS.mac?
   cask "mockoon"
   cask "obs"
   cask "scroll-reverser"
-  cask "skitch"
   cask "slack"
   cask "visual-studio-code"
 
