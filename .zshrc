@@ -47,6 +47,9 @@ fi
 # enable asdf
 . $(brew --prefix asdf)/libexec/asdf.sh
 
+# enable mise
+eval "$(mise activate zsh)"
+
 # enable direnv
 eval "$(direnv hook zsh)"
 
