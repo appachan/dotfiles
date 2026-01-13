@@ -2,18 +2,6 @@
 
 add_newline = true
 
-[character]
-success_symbol = "[   ](bold #795548)"
-error_symbol = "[♨️  ](bold red)"
-
-# banal looks
-#success_symbol = "[  ](bold green)"
-#error_symbol = "[  ](bold red)"
-
-# weather-looks
-#success_symbol = "[ ](bold yellow)"
-#error_symbol = "[ ](bold blue)"
-
 [aws]
 symbol = " "
 
