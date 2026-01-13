@@ -81,6 +81,10 @@ deploy: clean
 	ln -s $(ROOT)/.config/gitui $$HOME/.config/gitui
 	## neovim
 	ln -s $(ROOT)/.config/nvim $$HOME/.config/nvim
+	## mise
+	ln -s $(ROOT)/dot_config/mise $$HOME/.config/mise
+	## ccstatusline
+	ln -s $(ROOT)/dot_config/ccstatusline $$HOME/.config/ccstatusline
 
 # clean dotfiles already deployed.
 clean:
