@@ -53,6 +53,7 @@ if OS.mac?
   cask "scroll-reverser"
   cask "slack"
   cask "visual-studio-code"
+  cask "wezterm"
 
   mas "GIPHY CAPTURE", id: 668208984
   mas "Headphoned", id: 1040734333

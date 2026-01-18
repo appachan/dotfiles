@@ -85,6 +85,8 @@ deploy: clean
 	ln -s $(ROOT)/dot_config/mise $$HOME/.config/mise
 	## ccstatusline
 	ln -s $(ROOT)/dot_config/ccstatusline $$HOME/.config/ccstatusline
+	## wezterm
+	ln -s $(ROOT)/dot_config/wezterm $$HOME/.config/wezterm
 
 # clean dotfiles already deployed.
 clean:
@@ -113,6 +115,8 @@ clean:
 	rm -rf $$HOME/.config/karabiner &> /dev/null
 	## peco
 	rm -rf $$HOME/.config/peco &> /dev/null
+	## wezterm
+	rm -rf $$HOME/.config/wezterm &> /dev/null
 
 build_brew:
 	# setup Homebrew.
