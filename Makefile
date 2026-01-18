@@ -87,6 +87,8 @@ deploy: clean
 	ln -s $(ROOT)/dot_config/ccstatusline $$HOME/.config/ccstatusline
 	## wezterm
 	ln -s $(ROOT)/dot_config/wezterm $$HOME/.config/wezterm
+	## yazi
+	ln -s $(ROOT)/dot_config/yazi $$HOME/.config/yazi
 
 # clean dotfiles already deployed.
 clean:
@@ -117,6 +119,8 @@ clean:
 	rm -rf $$HOME/.config/peco &> /dev/null
 	## wezterm
 	rm -rf $$HOME/.config/wezterm &> /dev/null
+	## yazi
+	rm -rf $$HOME/.config/yazi &> /dev/null
 
 build_brew:
 	# setup Homebrew.
