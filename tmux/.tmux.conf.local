@@ -276,6 +276,9 @@ bind-key C-t send-prefix
 # decrease repeat timeout
 set -sg repeat-time 200
 
+# show sorted session list
+bind s choose-tree -Zs -O name
+
 # move panes
 bind -n C-o select-pane -t :.+
 
