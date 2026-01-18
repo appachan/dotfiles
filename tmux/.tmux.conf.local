@@ -276,6 +276,9 @@ bind-key C-t send-prefix
 # decrease repeat timeout
 set -sg repeat-time 200
 
+# show sorted session list
+bind s choose-tree -Zs -O name
+
 # move panes
 bind -n C-o select-pane -t :.+
 
@@ -295,6 +298,9 @@ unbind C-a
 # copy-mode: keybind -> vim
 setw -g mode-keys vi
 
+# start new session within the session
+bind N new-session -A -s "#{b:pane_current_path}" -c "#{pane_current_path}"
+
 # tpm (Tmux Plugin Manager)
 # List of plugins
 set -g @tpm_plugins '\
@@ -310,6 +316,7 @@ set -g @tpm_plugins '\
 
 # tmux-resurrect/continuum
 set -g @continuum-save-interval '60'
+set -g @continuum-restore 'on'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run -b '~/.tmux/plugins/tpm/tpm'

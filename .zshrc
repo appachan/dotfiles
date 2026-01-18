@@ -14,10 +14,8 @@ esac
 
 alias rm="rm"
 alias sshx="ssh -2 -C -Y"
-alias cp="cp"
 alias cat='bat'
-alias repos='ghq list -p | peco'
-alias gorepo='cd $(repos)'
+alias cp="cp"
 alias sharedir='du -h -d 1 | sort -rh'
 alias tmuxnew='tmux new -s `basename $PWD`'
 
@@ -30,14 +28,23 @@ export PATH="$HOME/bin/:$PATH"
 
 export PIPENV_VENV_IN_PROJECT="true"
 
-# show cmd history with peco
-function peco-select-history() {
-    BUFFER="$(history -nr 1 | awk '!a[$0]++' | peco --query "$LBUFFER" | sed 's/\\n/\n/')"
-    CURSOR=$#BUFFER
-    zle -R -c
+# cr: change repository
+cr() {
+    local dir="$(ghq list -p | fzf)"
+    [[ -n "$dir" ]] && cd "$dir"
 }
-zle -N peco-select-history
-bindkey '^R' peco-select-history
+
+# Ctrl + r: fuzzy search command history
+function fzf-select-history() {
+    local selected="$(history -nr 1 | awk '!a[$0]++' | fzf --query "$LBUFFER" | sed 's/\\n/\n/g')"
+    if [[ -n "$selected" ]]; then
+        BUFFER="$selected"
+        CURSOR=$#BUFFER
+    fi
+    zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^R' fzf-select-history
 
 # 環境ごとに個別の設定ファイル
 if [[ -s "$HOME/separated_rc.zsh" ]]; then
