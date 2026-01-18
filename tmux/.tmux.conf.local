@@ -298,6 +298,9 @@ unbind C-a
 # copy-mode: keybind -> vim
 setw -g mode-keys vi
 
+# start new session within the session
+bind N new-session -A -s "#{b:pane_current_path}" -c "#{pane_current_path}"
+
 # tpm (Tmux Plugin Manager)
 # List of plugins
 set -g @tpm_plugins '\
