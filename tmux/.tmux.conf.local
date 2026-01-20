@@ -279,9 +279,6 @@ set -sg repeat-time 200
 # show sorted session list
 bind s choose-tree -Zs -O name
 
-# move panes
-bind -n C-o select-pane -t :.+
-
 # resize pane
 bind -r C-h resize-pane -L 5
 bind -r C-j resize-pane -D 5
