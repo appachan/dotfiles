@@ -30,7 +30,7 @@ endif
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
-setup_vim setup_neovim setup_zsh setup_tmux done
+setup_vim setup_neovim setup_tmux done
 
 all: init deploy done
 
@@ -44,15 +44,15 @@ ifeq ($(CURL), )
 	false
 endif
 
-# brew, mas, | zsh(zprezto), vim, tmux, ...
-init: check_requirements build_brew install_brew_formulae setup_zsh setup_vim setup_tmux
+# brew, mas, vim, tmux, ...
+init: check_requirements build_brew install_brew_formulae setup_vim setup_tmux
 
 # dotfiles installation.
 deploy: clean
 	@echo 'make symbolic-links'
 
 	# zsh
-	ln -s $(ROOT)/.zshrc $$HOME/.zshrc
+	ln -s $(ROOT)/dot_zshrc $$HOME/.zshrc
 
 	# git
 	ln -s $(ROOT)/.gitconfig $$HOME/.gitconfig
@@ -89,13 +89,15 @@ deploy: clean
 	ln -s $(ROOT)/dot_config/wezterm $$HOME/.config/wezterm
 	## yazi
 	ln -s $(ROOT)/dot_config/yazi $$HOME/.config/yazi
+	## sheldon
+	ln -s $(ROOT)/dot_config/sheldon $$HOME/.config/sheldon
 
 # clean dotfiles already deployed.
 clean:
 	@echo 'remove symbolic-links'
 
 	# zsh
-	rm -rf $$HOME/.zshrc &> /dev/null
+	unlink $$HOME/.zshrc &> /dev/null || true
 
 	# git
 	rm -rf $$HOME/.gitconfig &> /dev/null
@@ -121,6 +123,8 @@ clean:
 	rm -rf $$HOME/.config/wezterm &> /dev/null
 	## yazi
 	rm -rf $$HOME/.config/yazi &> /dev/null
+	## sheldon
+	rm -rf $$HOME/.config/sheldon &> /dev/null
 
 build_brew:
 	# setup Homebrew.
@@ -128,10 +132,6 @@ build_brew:
 
 install_brew_formulae:
 	$(EXPORT_BREW) && brew bundle --file=$(ROOT)/Brewfile
-
-setup_zsh:
-	# install zprezto
-	$(EXPORT_BREW) && zsh $(ROOT)/zsh/prezto/setup.sh
 
 setup_vim:
 	# install NeoBundle

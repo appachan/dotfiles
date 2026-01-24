@@ -1,0 +1,137 @@
+# ============================================
+# Zsh Configuration (without prezto)
+# ============================================
+
+# --------------------------------------------
+# History Configuration
+# --------------------------------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt SHARE_HISTORY             # Share history between all sessions.
+
+# --------------------------------------------
+# Key Bindings
+# --------------------------------------------
+bindkey -e  # Emacs key bindings
+
+# history-substring-search keybindings (will be set after plugin loads)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# --------------------------------------------
+# Homebrew
+# --------------------------------------------
+case ${OSTYPE} in
+    darwin*)
+        eval $(/opt/homebrew/bin/brew shellenv)
+        ;;
+    linux*)
+        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        ;;
+esac
+
+# --------------------------------------------
+# Aliases
+# --------------------------------------------
+alias cat='bat'
+alias la='ll -A'
+alias ll='ls -lh'
+alias sharedir='du -h -d 1 | sort -rh'
+alias sshx="ssh -2 -C -Y"
+alias tmuxnew='tmux new -s `basename $PWD`'
+
+# --------------------------------------------
+# Environment Variables
+# --------------------------------------------
+export PATH="$HOME/.go/bin:$PATH"
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/bin/:$PATH"
+
+export PIPENV_VENV_IN_PROJECT="true"
+
+# --------------------------------------------
+# Custom Functions
+# --------------------------------------------
+
+# cr: change repository
+cr() {
+    local dir="$(ghq list -p | fzf)"
+    [[ -n "$dir" ]] && cd "$dir"
+}
+
+# Ctrl + r: fuzzy search command history
+function fzf-select-history() {
+    local selected="$(history -nr 1 | awk '!a[$0]++' | fzf --query "$LBUFFER" | sed 's/\\n/\n/g')"
+    if [[ -n "$selected" ]]; then
+        BUFFER="$selected"
+        CURSOR=$#BUFFER
+    fi
+    zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^R' fzf-select-history
+
+# --------------------------------------------
+# Tool Integrations
+# --------------------------------------------
+
+# asdf
+. $(brew --prefix asdf)/libexec/asdf.sh
+
+# mise
+eval "$(mise activate zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# starship
+eval "$(starship init zsh)"
+
+# --------------------------------------------
+# Completion System
+# --------------------------------------------
+# Load Homebrew completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+autoload bashcompinit && bashcompinit
+
+# Completion menu selection with highlight
+zstyle ':completion:*' menu select
+
+# Shift + Tab: Reverse menu selection
+bindkey '^[[Z' reverse-menu-complete
+
+# Group completion candidates by type
+zstyle ':completion:*' group-name ''
+
+# Format the headings for each group
+zstyle ':completion:*:descriptions' format '%B%F{yellow}--- %d ---%f%b'
+
+# --------------------------------------------
+# Sheldon Plugin Manager
+# --------------------------------------------
+eval "$(sheldon source)"
+
+# --------------------------------------------
+# Device-specific Configuration
+# --------------------------------------------
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
