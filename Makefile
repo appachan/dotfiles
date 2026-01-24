@@ -91,6 +91,8 @@ deploy: clean
 	ln -s $(ROOT)/dot_config/yazi $$HOME/.config/yazi
 	## sheldon
 	ln -s $(ROOT)/dot_config/sheldon $$HOME/.config/sheldon
+	## jiq
+	ln -s $(ROOT)/dot_config/jiq $$HOME/.config/jiq
 
 # clean dotfiles already deployed.
 clean:
@@ -125,6 +127,8 @@ clean:
 	rm -rf $$HOME/.config/yazi &> /dev/null
 	## sheldon
 	rm -rf $$HOME/.config/sheldon &> /dev/null
+	## jiq
+	rm -rf $$HOME/.config/jiq &> /dev/null
 
 build_brew:
 	# setup Homebrew.
