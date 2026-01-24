@@ -44,6 +44,7 @@ esac
 # Aliases
 # --------------------------------------------
 alias cat='bat'
+alias cdi='zi'
 alias la='ll -A'
 alias ll='ls -lh'
 alias sharedir='du -h -d 1 | sort -rh'
@@ -99,6 +100,9 @@ eval "$(direnv hook zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # --------------------------------------------
 # Completion System
