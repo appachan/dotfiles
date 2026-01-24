@@ -40,7 +40,6 @@ if OS.mac?
   brew "reattach-to-user-namespace"
 
   cask "1password"
-  cask "Sequel Pro"
   cask "alacritty"
   cask "alfred"
   cask "discord"
@@ -52,6 +51,7 @@ if OS.mac?
   cask "mockoon"
   cask "obs"
   cask "scroll-reverser"
+  cask "sequel-ace"
   cask "slack"
   cask "visual-studio-code"
   cask "wezterm"
