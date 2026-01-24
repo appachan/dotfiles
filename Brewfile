@@ -6,6 +6,7 @@ tap "homebrew/core"
 # install tools
 brew "asdf"
 brew "bat"
+brew "bellicose100xp/tap/jiq"
 brew "cmake"
 brew "colima"
 brew "direnv"
