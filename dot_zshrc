@@ -47,6 +47,7 @@ alias cat='bat'
 alias cdi='zi'
 alias la='ll -A'
 alias ll='ls -lh'
+alias ls='ls -G'
 alias sharedir='du -h -d 1 | sort -rh'
 alias sshx="ssh -2 -C -Y"
 alias tmuxnew='tmux new -s `basename $PWD`'
@@ -54,6 +55,10 @@ alias tmuxnew='tmux new -s `basename $PWD`'
 # --------------------------------------------
 # Environment Variables
 # --------------------------------------------
+# ls color settings
+export CLICOLOR=1
+export LSCOLORS=exfxcxdxbxegedabagacad
+
 export PATH="$HOME/.go/bin:$PATH"
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
