@@ -94,6 +94,11 @@ deploy: clean
 	## jiq
 	ln -s $(ROOT)/dot_config/jiq $$HOME/.config/jiq
 
+	# claude code
+	mkdir -p $$HOME/.claude
+	ln -s $(ROOT)/dot_claude/settings.json $$HOME/.claude/settings.json
+	ln -s $(ROOT)/dot_claude/hooks $$HOME/.claude/hooks
+
 # clean dotfiles already deployed.
 clean:
 	@echo 'remove symbolic-links'
@@ -129,6 +134,10 @@ clean:
 	rm -rf $$HOME/.config/sheldon &> /dev/null
 	## jiq
 	rm -rf $$HOME/.config/jiq &> /dev/null
+
+	# claude code
+	rm -f $$HOME/.claude/settings.json &> /dev/null || true
+	rm -rf $$HOME/.claude/hooks &> /dev/null || true
 
 build_brew:
 	# setup Homebrew.
