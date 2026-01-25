@@ -9,7 +9,7 @@ config.color_scheme = 'Tomorrow Night'
 local scheme = wezterm.color.get_builtin_schemes()['Tomorrow Night']
 config.colors = {
   ansi = {
-    '#928374',  -- black (color 0): visible gray for borders/UI elements
+    scheme.ansi[1],
     scheme.ansi[2],
     scheme.ansi[3],
     scheme.ansi[4],
@@ -19,7 +19,7 @@ config.colors = {
     scheme.ansi[8],
   },
   brights = {
-    '#707070',  -- bright black (color 8): lighter gray for autosuggestions
+    '#707070',  -- bright black (color 8): lighter gray for autosuggestions/borders/UI elements
     scheme.brights[2],
     scheme.brights[3],
     scheme.brights[4],
