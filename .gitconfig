@@ -31,4 +31,4 @@
   root = ~/work/src/
 
 [rebase]
-	autostash = true
+  autostash = true
