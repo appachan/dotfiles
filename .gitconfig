@@ -3,9 +3,16 @@
 [user]
   name  = appachan
   email = appachan.hotel@gmail.com 
+  signingkey = /path/to/signingkey
+
+[gpg]
+	format = ssh
 
 [github]
   user = appachan
+
+[commit]
+	gpgsign = true
 
 [color]
   diff = auto
