@@ -13,8 +13,11 @@
       },
       {
         "id": "3",
-        "type": "session-clock",
-        "color": "brightBlue"
+        "type": "context-percentage",
+        "color": "brightBlue",
+        "metadata": {
+          "inverse": "false"
+        }
       },
       {
         "id": "4",
@@ -22,11 +25,8 @@
       },
       {
         "id": "5",
-        "type": "context-percentage",
-        "color": "brightBlue",
-        "metadata": {
-          "inverse": "false"
-        }
+        "type": "session-clock",
+        "color": "brightBlue"
       }
     ],
     [
