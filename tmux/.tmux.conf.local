@@ -317,6 +317,10 @@ bind-key g display-popup \
 # Sends `@<path>` to claude/codex/gemini panes, shell-escaped paths otherwise.
 bind C-f display-popup -E -d "#{pane_current_path}" -w 90% -h 90% "tmux-file-picker"
 
+# copy the current pane reference (`tmux pane %<id>`) to the clipboard,
+# ready to paste into Claude Code prompts so the agent can capture-pane it.
+bind Y run-shell "printf 'tmux pane %s' '#{pane_id}' | pbcopy && tmux display-message 'copied: tmux pane %#{pane_id}'"
+
 # tpm (Tmux Plugin Manager)
 # List of plugins
 set -g @tpm_plugins '\
