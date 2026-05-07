@@ -53,6 +53,7 @@ deploy: clean
 
 	# zsh
 	ln -s $(ROOT)/dot_zshrc $$HOME/.zshrc
+	ln -s $(ROOT)/dot_zshenv $$HOME/.zshenv
 
 	# git
 	ln -s $(ROOT)/.gitconfig $$HOME/.gitconfig
@@ -66,6 +67,11 @@ deploy: clean
 	# tmux
 	ln -s $(ROOT)/tmux/tmux_template/.tmux.conf $$HOME/.tmux.conf
 	ln -s $(ROOT)/tmux/.tmux.conf.local $$HOME/.tmux.conf.local
+
+	# tmux popup scripts (deployed under ~/.local/bin per XDG convention)
+	mkdir -p $$HOME/.local/bin
+	ln -s $(ROOT)/tmux/scripts/tmux-file-picker.sh $$HOME/.local/bin/tmux-file-picker
+	ln -s $(ROOT)/tmux/scripts/grep-preview.sh $$HOME/.local/bin/grep-preview
 
 	# tools based on the XDG Base Directory Specification
 	mkdir -p $$HOME/.config
@@ -93,11 +99,14 @@ deploy: clean
 	ln -s $(ROOT)/dot_config/sheldon $$HOME/.config/sheldon
 	## jiq
 	ln -s $(ROOT)/dot_config/jiq $$HOME/.config/jiq
+	## lazygit
+	ln -s $(ROOT)/dot_config/lazygit $$HOME/.config/lazygit
 
 	# claude code
 	mkdir -p $$HOME/.claude
 	ln -s $(ROOT)/dot_claude/settings.json $$HOME/.claude/settings.json
 	ln -s $(ROOT)/dot_claude/hooks $$HOME/.claude/hooks
+	ln -s $(ROOT)/dot_claude/CLAUDE.md $$HOME/.claude/CLAUDE.md
 
 # clean dotfiles already deployed.
 clean:
@@ -105,6 +114,7 @@ clean:
 
 	# zsh
 	unlink $$HOME/.zshrc &> /dev/null || true
+	unlink $$HOME/.zshenv &> /dev/null || true
 
 	# git
 	rm -rf $$HOME/.gitconfig &> /dev/null
@@ -118,6 +128,10 @@ clean:
 	# tmux
 	rm -rf $$HOME/.tmux.conf &> /dev/null
 	rm -rf $$HOME/.tmux.conf.local &> /dev/null
+
+	# tmux popup scripts
+	rm -f $$HOME/.local/bin/tmux-file-picker &> /dev/null || true
+	rm -f $$HOME/.local/bin/grep-preview &> /dev/null || true
 
 	# tools based on the XDG Base Directory Specification
 	## alacritty
@@ -134,10 +148,13 @@ clean:
 	rm -rf $$HOME/.config/sheldon &> /dev/null
 	## jiq
 	rm -rf $$HOME/.config/jiq &> /dev/null
+	## lazygit
+	rm -rf $$HOME/.config/lazygit &> /dev/null
 
 	# claude code
 	rm -f $$HOME/.claude/settings.json &> /dev/null || true
 	rm -rf $$HOME/.claude/hooks &> /dev/null || true
+	rm -f $$HOME/.claude/CLAUDE.md &> /dev/null || true
 
 build_brew:
 	# setup Homebrew.

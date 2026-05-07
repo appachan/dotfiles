@@ -13,7 +13,10 @@
 # new window retains current path, possible values are:
 #   - true
 #   - false (default)
-tmux_conf_new_window_retain_current_path=false
+# (we flip this to true; the parent .tmux.conf rewriter then appends
+# `-c "#{pane_current_path}"` to `bind c new-window`. Without this, splits/new
+# windows fall back to session_path, which resurrect can pollute.)
+tmux_conf_new_window_retain_current_path=true
 
 # new pane retains current path, possible values are:
 #   - true (default)
@@ -263,6 +266,8 @@ tmux_conf_theme_clock_style='24'
 tmux_conf_copy_to_os_clipboard=true
 
 # -- my settings ---------------------------------------------------------------
+set -g detach-on-destroy off
+
 # color
 set-option -g default-terminal screen-256color
 set -g terminal-overrides ',alacritty:RGB'
@@ -282,11 +287,11 @@ set -sg repeat-time 200
 # show sorted session list
 bind s choose-tree -Zs -O name
 
-# resize pane
-bind -r C-h resize-pane -L 5
-bind -r C-j resize-pane -D 5
-bind -r C-k resize-pane -U 5
-bind -r C-l resize-pane -R 5
+# pane resize: bump the template's `prefix H/J/K/L` step from 2 to 5 cells.
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
 
 # reload .tmux.conf
 bind r source-file ~/.tmux.conf \; display-message "reloaded."
@@ -300,6 +305,21 @@ setw -g mode-keys vi
 
 # start new session within the session
 bind N new-session -A -s "#{b:pane_current_path}" -c "#{pane_current_path}"
+
+# open lazygit in pop-up
+bind-key g display-popup \
+  -d "#{pane_current_path}" \
+  -w 90% -h 90% \
+  -E lazygit
+
+# open file picker in pop-up (tmux-file-picker)
+# Fuzzy-find files; inside the picker, C-s toggles between filename and grep mode.
+# Sends `@<path>` to claude/codex/gemini panes, shell-escaped paths otherwise.
+bind C-f display-popup -E -d "#{pane_current_path}" -w 90% -h 90% "tmux-file-picker"
+
+# copy the current pane reference (`tmux pane %<id>`) to the clipboard,
+# ready to paste into Claude Code prompts so the agent can capture-pane it.
+bind Y run-shell "printf 'tmux pane %s' '#{pane_id}' | pbcopy && tmux display-message 'copied: tmux pane %#{pane_id}'"
 
 # tpm (Tmux Plugin Manager)
 # List of plugins

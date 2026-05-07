@@ -65,6 +65,7 @@ export GOBIN="$GOPATH/bin"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/bin/:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 export PIPENV_VENV_IN_PROJECT="true"
 
@@ -76,6 +77,29 @@ export PIPENV_VENV_IN_PROJECT="true"
 cr() {
     local dir="$(ghq list -p | fzf)"
     [[ -n "$dir" ]] && cd "$dir"
+}
+
+# tl: layout tmux panes
+#   Splits the current single pane into:
+#     +-------------+-------------+
+#     |   yazi      |   claude    |
+#     |  (top-left) | (top-right) |
+#     +-------------+-------------+
+#     |    shell (bottom 20%)     |
+#     +---------------------------+
+#   Run from a fresh tmux session (single pane).
+#   opensessions sidebar is managed by the plugin (`prefix o s`).
+tl() {
+    local p_yazi p_claude p_shell
+    p_yazi=$(tmux display -p '#{pane_id}')
+
+    p_shell=$(tmux split-window -v -t "$p_yazi" -l '20%' -P -F '#{pane_id}')
+    p_claude=$(tmux split-window -h -t "$p_yazi" -l '50%' -P -F '#{pane_id}')
+
+    tmux send-keys -t "$p_yazi"   'yazi'   C-m
+    tmux send-keys -t "$p_claude" 'claude' C-m
+
+    tmux select-pane -t "$p_claude"
 }
 
 # Ctrl + r: fuzzy search command history
@@ -93,9 +117,6 @@ bindkey '^R' fzf-select-history
 # --------------------------------------------
 # Tool Integrations
 # --------------------------------------------
-
-# asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
 
 # mise
 eval "$(mise activate zsh)"

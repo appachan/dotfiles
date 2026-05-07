@@ -1,5 +1,7 @@
 {
-  "language": "日本語",
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "hooks": {
     "Notification": [
       {
@@ -26,7 +28,10 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "npx -y ccstatusline@latest",
+    "command": "bunx -y ccstatusline@latest",
     "padding": 0
-  }
+  },
+  "language": "日本語",
+  "theme": "dark-daltonized",
+  "skipAutoPermissionPrompt": true
 }

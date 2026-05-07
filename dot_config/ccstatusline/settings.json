@@ -3,6 +3,18 @@
   "lines": [
     [
       {
+        "id": "3",
+        "type": "context-percentage",
+        "color": "brightBlue",
+        "metadata": {
+          "inverse": "false"
+        }
+      },
+      {
+        "id": "4",
+        "type": "separator"
+      },
+      {
         "id": "1",
         "type": "model",
         "color": "brightBlue"
@@ -12,21 +24,9 @@
         "type": "separator"
       },
       {
-        "id": "3",
-        "type": "session-clock",
+        "id": "fb9f6d80-c8b0-416d-80dc-973ef9b5cc9d",
+        "type": "thinking-effort",
         "color": "brightBlue"
-      },
-      {
-        "id": "4",
-        "type": "separator"
-      },
-      {
-        "id": "5",
-        "type": "context-percentage",
-        "color": "brightBlue",
-        "metadata": {
-          "inverse": "false"
-        }
       }
     ],
     [
@@ -60,6 +60,13 @@
         "type": "current-working-dir",
         "color": "brightBlack"
       }
+    ],
+    [
+      {
+        "id": "e2226481-66d6-49d3-a11c-95bb451adf98",
+        "type": "claude-session-id",
+        "color": "brightBlack"
+      }
     ]
   ],
   "flexMode": "full-minus-40",
@@ -67,6 +74,7 @@
   "colorLevel": 2,
   "inheritSeparatorColors": false,
   "globalBold": false,
+  "minimalistMode": false,
   "powerline": {
     "enabled": false,
     "separators": [
@@ -77,6 +85,7 @@
     ],
     "startCaps": [],
     "endCaps": [],
-    "autoAlign": false
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
   }
 }

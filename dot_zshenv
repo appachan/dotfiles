@@ -1,0 +1,4 @@
+# FIXME: remove after the issue fixed.
+# https://github.com/jesseduffield/lazygit/pull/3989
+export XDG_CONFIG_HOME="$HOME/.config"
+
