@@ -79,6 +79,29 @@ cr() {
     [[ -n "$dir" ]] && cd "$dir"
 }
 
+# tl: layout tmux panes
+#   Splits the current single pane into:
+#     +-------------+-------------+
+#     |   yazi      |   claude    |
+#     |  (top-left) | (top-right) |
+#     +-------------+-------------+
+#     |    shell (bottom 20%)     |
+#     +---------------------------+
+#   Run from a fresh tmux session (single pane).
+#   opensessions sidebar is managed by the plugin (`prefix o s`).
+tl() {
+    local p_yazi p_claude p_shell
+    p_yazi=$(tmux display -p '#{pane_id}')
+
+    p_shell=$(tmux split-window -v -t "$p_yazi" -l '20%' -P -F '#{pane_id}')
+    p_claude=$(tmux split-window -h -t "$p_yazi" -l '50%' -P -F '#{pane_id}')
+
+    tmux send-keys -t "$p_yazi"   'yazi'   C-m
+    tmux send-keys -t "$p_claude" 'claude' C-m
+
+    tmux select-pane -t "$p_claude"
+}
+
 # Ctrl + r: fuzzy search command history
 function fzf-select-history() {
     local selected="$(history -nr 1 | awk '!a[$0]++' | fzf --query "$LBUFFER" | sed 's/\\n/\n/g')"
