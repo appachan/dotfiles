@@ -312,6 +312,11 @@ bind-key g display-popup \
   -w 90% -h 90% \
   -E lazygit
 
+# open file picker in pop-up (tmux-file-picker)
+# Fuzzy-find files; inside the picker, C-s toggles between filename and grep mode.
+# Sends `@<path>` to claude/codex/gemini panes, shell-escaped paths otherwise.
+bind C-f display-popup -E -d "#{pane_current_path}" -w 90% -h 90% "tmux-file-picker"
+
 # tpm (Tmux Plugin Manager)
 # List of plugins
 set -g @tpm_plugins '\

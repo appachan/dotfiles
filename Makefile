@@ -68,6 +68,11 @@ deploy: clean
 	ln -s $(ROOT)/tmux/tmux_template/.tmux.conf $$HOME/.tmux.conf
 	ln -s $(ROOT)/tmux/.tmux.conf.local $$HOME/.tmux.conf.local
 
+	# tmux popup scripts (deployed under ~/.local/bin per XDG convention)
+	mkdir -p $$HOME/.local/bin
+	ln -s $(ROOT)/tmux/scripts/tmux-file-picker.sh $$HOME/.local/bin/tmux-file-picker
+	ln -s $(ROOT)/tmux/scripts/grep-preview.sh $$HOME/.local/bin/grep-preview
+
 	# tools based on the XDG Base Directory Specification
 	mkdir -p $$HOME/.config
 	## alacritty
@@ -122,6 +127,10 @@ clean:
 	# tmux
 	rm -rf $$HOME/.tmux.conf &> /dev/null
 	rm -rf $$HOME/.tmux.conf.local &> /dev/null
+
+	# tmux popup scripts
+	rm -f $$HOME/.local/bin/tmux-file-picker &> /dev/null || true
+	rm -f $$HOME/.local/bin/grep-preview &> /dev/null || true
 
 	# tools based on the XDG Base Directory Specification
 	## alacritty
