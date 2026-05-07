@@ -1,6 +1,7 @@
 [tools]
 bun = "latest"
 node = "lts"
+ruby = "3.3"
 "npm:ccstatusline" = "2"
 "npm:difit" = "4"
 "npm:gitmoji-cli" = "9"

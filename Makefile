@@ -30,7 +30,7 @@ endif
 NEOBUNDLE_COMMAND := sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh)" # git required.
 
 .PHONY: all init deploy clean test build_brew install_brew_formulae check_requirements \
-setup_vim setup_neovim setup_tmux done
+setup_vim setup_tmux done
 
 all: init deploy done
 
@@ -84,7 +84,7 @@ deploy: clean
 	## gitui
 	ln -s $(ROOT)/.config/gitui $$HOME/.config/gitui
 	## neovim
-	ln -s $(ROOT)/.config/nvim $$HOME/.config/nvim
+	ln -s $(ROOT)/dot_config/nvim $$HOME/.config/nvim
 	## mise
 	ln -s $(ROOT)/dot_config/mise $$HOME/.config/mise
 	## ccstatusline
@@ -164,9 +164,6 @@ install_brew_formulae:
 setup_vim:
 	# install NeoBundle
 	$(NEOBUNDLE_COMMAND)
-	
-setup_neovim:
-	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 setup_tmux:
 	# install tpm
