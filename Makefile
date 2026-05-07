@@ -75,8 +75,6 @@ deploy: clean
 
 	# tools based on the XDG Base Directory Specification
 	mkdir -p $$HOME/.config
-	## alacritty
-	ln -s $(ROOT)/.config/alacritty $$HOME/.config/alacritty
 	## karabiner-elements
 	ln -s $(ROOT)/.config/karabiner $$HOME/.config/karabiner
 	## peco
@@ -134,8 +132,6 @@ clean:
 	rm -f $$HOME/.local/bin/grep-preview &> /dev/null || true
 
 	# tools based on the XDG Base Directory Specification
-	## alacritty
-	rm -rf $$HOME/.config/alacritty &> /dev/null
 	## karabiner-elements
 	rm -rf $$HOME/.config/karabiner &> /dev/null
 	## peco

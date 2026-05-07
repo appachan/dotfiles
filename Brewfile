@@ -46,7 +46,6 @@ if OS.mac?
   brew "reattach-to-user-namespace"
 
   cask "1password"
-  cask "alacritty"
   cask "alfred"
   cask "android-studio"
   cask "discord"
