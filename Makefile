@@ -53,6 +53,7 @@ deploy: clean
 
 	# zsh
 	ln -s $(ROOT)/dot_zshrc $$HOME/.zshrc
+	ln -s $(ROOT)/dot_zshenv $$HOME/.zshenv
 
 	# git
 	ln -s $(ROOT)/.gitconfig $$HOME/.gitconfig
@@ -93,6 +94,8 @@ deploy: clean
 	ln -s $(ROOT)/dot_config/sheldon $$HOME/.config/sheldon
 	## jiq
 	ln -s $(ROOT)/dot_config/jiq $$HOME/.config/jiq
+	## lazygit
+	ln -s $(ROOT)/dot_config/lazygit $$HOME/.config/lazygit
 
 	# claude code
 	mkdir -p $$HOME/.claude
@@ -105,6 +108,7 @@ clean:
 
 	# zsh
 	unlink $$HOME/.zshrc &> /dev/null || true
+	unlink $$HOME/.zshenv &> /dev/null || true
 
 	# git
 	rm -rf $$HOME/.gitconfig &> /dev/null
@@ -134,6 +138,8 @@ clean:
 	rm -rf $$HOME/.config/sheldon &> /dev/null
 	## jiq
 	rm -rf $$HOME/.config/jiq &> /dev/null
+	## lazygit
+	rm -rf $$HOME/.config/lazygit &> /dev/null
 
 	# claude code
 	rm -f $$HOME/.claude/settings.json &> /dev/null || true

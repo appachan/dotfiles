@@ -301,6 +301,12 @@ setw -g mode-keys vi
 # start new session within the session
 bind N new-session -A -s "#{b:pane_current_path}" -c "#{pane_current_path}"
 
+# open lazygit in pop-up
+bind-key g display-popup \
+  -d "#{pane_current_path}" \
+  -w 90% -h 90% \
+  -E lazygit
+
 # tpm (Tmux Plugin Manager)
 # List of plugins
 set -g @tpm_plugins '\

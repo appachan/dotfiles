@@ -26,9 +26,22 @@
 
 [core]
   editor = nvim
+  pager = delta
 
 [ghq]
   root = ~/work/src/
 
 [rebase]
   autostash = true
+
+[merge]
+  conflictStyle = zdiff3
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  dark = true
+  line-numbers = true
+  navigate = true
+
