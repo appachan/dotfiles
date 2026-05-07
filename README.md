@@ -9,7 +9,6 @@
 [![support vscode](https://img.shields.io/badge/support-vscode-blue.svg)](https://github.com/microsoft/vscode)
 [![support peco](https://img.shields.io/badge/support-peco-green.svg)](https://github.com/peco/peco)
 [![support karabiner](https://img.shields.io/badge/support-karabiner-green.svg)](https://github.com/tekezo/Karabiner-Elements)
-[![support alacritty](https://img.shields.io/badge/support-alacritty-green.svg)](https://github.com/jwilm/alacritty)
 
 ![require git](https://img.shields.io/badge/requirements-git-blue)
 ![require curl](https://img.shields.io/badge/requirements-curl-blue)
