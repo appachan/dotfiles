@@ -106,6 +106,7 @@ deploy: clean
 	mkdir -p $$HOME/.claude
 	ln -s $(ROOT)/dot_claude/settings.json $$HOME/.claude/settings.json
 	ln -s $(ROOT)/dot_claude/hooks $$HOME/.claude/hooks
+	ln -s $(ROOT)/dot_claude/CLAUDE.md $$HOME/.claude/CLAUDE.md
 
 # clean dotfiles already deployed.
 clean:
@@ -153,6 +154,7 @@ clean:
 	# claude code
 	rm -f $$HOME/.claude/settings.json &> /dev/null || true
 	rm -rf $$HOME/.claude/hooks &> /dev/null || true
+	rm -f $$HOME/.claude/CLAUDE.md &> /dev/null || true
 
 build_brew:
 	# setup Homebrew.
