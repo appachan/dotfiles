@@ -67,6 +67,30 @@
         "type": "claude-session-id",
         "color": "brightBlack"
       }
+    ],
+    [
+      {
+        "id": "9b62f7fa-34be-47b7-b11d-1715f95ea61b",
+        "type": "session-cost",
+        "color": "brightBlack"
+      },
+      {
+        "id": "dbcbedcd-955e-47f7-8abb-aed9c29e78cc",
+        "type": "separator"
+      },
+      {
+        "id": "5fb7ed7a-58bf-4a09-b363-aedafae0b5cf",
+        "type": "tokens-total",
+        "color": "brightBlack"
+      }
+    ],
+    [
+      {
+        "id": "91efa3f9-56c1-44b3-95a6-5711e327466b",
+        "type": "custom-command",
+        "color": "brightBlue",
+        "commandPath": "~/.claude/scripts/display-plan-and-org-for-statusline.sh"
+      }
     ]
   ],
   "flexMode": "full-minus-40",
@@ -74,6 +98,7 @@
   "colorLevel": 2,
   "inheritSeparatorColors": false,
   "globalBold": false,
+  "gitCacheTtlSeconds": 5,
   "minimalistMode": false,
   "powerline": {
     "enabled": false,
