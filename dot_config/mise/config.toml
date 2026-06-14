@@ -1,6 +1,8 @@
 [tools]
 bun = "latest"
+node = "lts"
 "npm:ccstatusline" = "latest"
+"npm:difit" = "4"
 
 [settings]
 minimum_release_age = "7d"
