@@ -3,6 +3,7 @@ bun = "latest"
 node = "lts"
 "npm:ccstatusline" = "2"
 "npm:difit" = "4"
+"npm:gitmoji-cli" = "9"
 
 [settings]
 minimum_release_age = "7d"
