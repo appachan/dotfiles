@@ -7,7 +7,6 @@ onboarding = false
 prefix = "ctrl+t"
 
 # Unset built-in actions so the custom commands below can claim these chords.
-goto = ""
 new_workspace = ""
 
 # `%` splits right (column), `"` splits down (row).
@@ -34,7 +33,7 @@ description = "new workspace at current pane cwd"
 
 # Open lazygit in a temporary pane.
 [[keys.command]]
-key = "prefix+g"
+key = "prefix+ctrl+g"
 type = "pane"
 command = "lazygit"
 description = "run lazygit"
