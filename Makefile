@@ -73,6 +73,9 @@ deploy: clean
 	ln -s $(ROOT)/tmux/scripts/tmux-file-picker.sh $$HOME/.local/bin/tmux-file-picker
 	ln -s $(ROOT)/tmux/scripts/grep-preview.sh $$HOME/.local/bin/grep-preview
 
+	# herdr popup scripts (grep-preview is shared with the block above)
+	ln -s $(ROOT)/dot_config/herdr/scripts/herdr-file-picker.sh $$HOME/.local/bin/herdr-file-picker
+
 	# tools based on the XDG Base Directory Specification
 	mkdir -p $$HOME/.config
 	## karabiner-elements
@@ -89,6 +92,8 @@ deploy: clean
 	ln -s $(ROOT)/dot_config/mise $$HOME/.config/mise
 	## ccstatusline
 	ln -s $(ROOT)/dot_config/ccstatusline $$HOME/.config/ccstatusline
+	## herdr
+	ln -s $(ROOT)/dot_config/herdr $$HOME/.config/herdr
 	## wezterm
 	ln -s $(ROOT)/dot_config/wezterm $$HOME/.config/wezterm
 	## yazi
@@ -106,6 +111,9 @@ deploy: clean
 	ln -s $(ROOT)/dot_claude/hooks $$HOME/.claude/hooks
 	ln -s $(ROOT)/dot_claude/CLAUDE.md $$HOME/.claude/CLAUDE.md
 	ln -s $(ROOT)/dot_claude/scripts $$HOME/.claude/scripts
+	# claude code skills (per-skill symlink; ~/.claude/skills may host others)
+	mkdir -p $$HOME/.claude/skills
+	ln -s $(ROOT)/dot_claude/skills/herdr $$HOME/.claude/skills/herdr
 
 # clean dotfiles already deployed.
 clean:
@@ -132,9 +140,14 @@ clean:
 	rm -f $$HOME/.local/bin/tmux-file-picker &> /dev/null || true
 	rm -f $$HOME/.local/bin/grep-preview &> /dev/null || true
 
+	# herdr popup scripts
+	rm -f $$HOME/.local/bin/herdr-file-picker &> /dev/null || true
+
 	# tools based on the XDG Base Directory Specification
 	## karabiner-elements
 	rm -rf $$HOME/.config/karabiner &> /dev/null
+	## herdr
+	rm -rf $$HOME/.config/herdr &> /dev/null
 	## peco
 	rm -rf $$HOME/.config/peco &> /dev/null
 	## wezterm
@@ -153,6 +166,7 @@ clean:
 	rm -rf $$HOME/.claude/hooks &> /dev/null || true
 	rm -f $$HOME/.claude/CLAUDE.md &> /dev/null || true
 	rm -rf $$HOME/.claude/scripts &> /dev/null || true
+	rm -f $$HOME/.claude/skills/herdr &> /dev/null || true
 
 build_brew:
 	# setup Homebrew.

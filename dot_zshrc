@@ -102,6 +102,45 @@ tl() {
     tmux select-pane -t "$p_claude"
 }
 
+# hl: herdr layout. Split the current pane into a 3-pane layout.
+#     +-------------+-------------+
+#     |   yazi      |   claude    |
+#     |  (top-left) | (top-right) |
+#     +-------------+-------------+
+#     |    shell (bottom 20%)     |
+#     +---------------------------+
+#   --ratio is the original pane's share. 0.8 = top 80%, 0.5 = left 50%.
+# TODO: herdr's socket API already exposes `layout.apply` with a declarative
+#   LayoutNode tree + LayoutPane.command, but there is no CLI subcommand yet.
+#   Once `herdr layout apply` lands, collapse this two-step split + two-step
+#   run into a single layout tree definition.
+hl() {
+    if [[ -z "${HERDR_PANE_ID-}" ]]; then
+        echo "hl: not inside a herdr pane" >&2
+        return 1
+    fi
+    local p_claude
+    herdr pane split --current --direction down --ratio 0.8 --no-focus > /dev/null
+    p_claude=$(herdr pane split --current --direction right --ratio 0.5 --focus | jq -r '.result.pane.pane_id')
+
+    herdr pane run "$HERDR_PANE_ID" 'yazi'
+    herdr pane run "$p_claude"      'claude'
+}
+
+# herdrnew: create a herdr workspace rooted at DIR (default: $PWD) and attach.
+#   Label is basename(DIR). herdr runs as a child process, so detaching
+#   returns to the calling shell. herdr has no attach-if-exists option;
+#   check `herdr workspace list` first when duplicate labels are a concern.
+herdrnew() {
+    local dir="${1:-$PWD}"
+    if [[ ! -d "$dir" ]]; then
+        echo "herdrnew: not a directory: $dir" >&2
+        return 1
+    fi
+    dir=$(cd "$dir" && pwd)
+    herdr workspace create --cwd "$dir" --label "$(basename "$dir")" --focus > /dev/null && herdr
+}
+
 # Ctrl + r: fuzzy search command history
 function fzf-select-history() {
     local selected="$(history -nr 1 | awk '!a[$0]++' | fzf --query "$LBUFFER" | sed 's/\\n/\n/g')"
