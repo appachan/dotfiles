@@ -1,0 +1,73 @@
+onboarding = false
+# herdr configuration
+# Reference default schema with: `herdr --default-config`.
+# herdr is pre-1.0; config keys may change between versions.
+
+[keys]
+prefix = "ctrl+t"
+
+# Unset built-in actions so the custom commands below can claim these chords.
+goto = ""
+new_workspace = ""
+
+# `%` splits right (column), `"` splits down (row).
+split_vertical = "prefix+percent"
+split_horizontal = "prefix+double_quote"
+
+# navigate-mode: j/k move workspace up/down. Pane-level directional keys are
+# unbound because pane focus is switched from within a pane via focus_pane_*.
+# (Left/Right arrows remain hardcoded to pane left/right focus.)
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+navigate_pane_up = ""
+navigate_pane_down = ""
+navigate_pane_left = ""
+navigate_pane_right = ""
+
+# Create a new workspace rooted at the invoking pane's cwd.
+# The built-in new_workspace action does not accept a cwd argument.
+[[keys.command]]
+key = "prefix+shift+n"
+type = "shell"
+command = "herdr workspace create --cwd \"$HERDR_ACTIVE_PANE_CWD\" --focus"
+description = "new workspace at current pane cwd"
+
+# Open lazygit in a temporary pane.
+[[keys.command]]
+key = "prefix+g"
+type = "pane"
+command = "lazygit"
+description = "run lazygit"
+
+# File picker. `herdr-file-picker` is linked into ~/.local/bin by the Makefile.
+[[keys.command]]
+key = "prefix+ctrl+f"
+type = "pane"
+command = "herdr-file-picker"
+description = "file picker"
+
+# Copy the focused pane's reference string to the clipboard for use as a hint
+# in a Claude Code prompt. The agent then invokes `herdr pane read <id>` or
+# `herdr pane send-text <id> <text>` from bash to read or drive that pane.
+[[keys.command]]
+key = "prefix+shift+y"
+type = "shell"
+command = "printf 'herdr pane %s' \"$HERDR_ACTIVE_PANE_ID\" | pbcopy"
+description = "copy pane ref to clipboard"
+
+[session]
+# Restore Claude/Codex/etc. conversations after a herdr server restart.
+resume_agents_on_restore = true
+
+[theme]
+name = "one-dark"
+auto_switch = false
+
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+show_agent_labels_on_pane_borders = false
+# Share divider borders between panes instead of adding a gap.
+pane_gaps = false
+agent_panel_sort = "spaces"
